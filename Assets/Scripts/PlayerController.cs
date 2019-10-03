@@ -6,6 +6,8 @@ public class PlayerController : MonoBehaviour
 {
     public float speed;
     private float horizontalInput;
+    private float xRange = 24.2f;
+    public GameObject projectile;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,16 +17,20 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            Instantiate(projectile, transform.position, projectile.transform.rotation);
+        }
         // Move left/right
 
         horizontalInput = Input.GetAxis("Horizontal");
         transform.Translate(Vector3.right * Time.deltaTime * speed * horizontalInput);
-        if (transform.position.x < -15)
+        if (transform.position.x < -xRange)
         {
-            transform.position = new Vector3(-15, transform.position.y, transform.position.z);
-        } else if (transform.position.x > 15)
+            transform.position = new Vector3(-xRange, transform.position.y, transform.position.z);
+        } else if (transform.position.x > xRange)
         {
-            transform.position = new Vector3(15, transform.position.y, transform.position.z);
+            transform.position = new Vector3(xRange, transform.position.y, transform.position.z);
         }
     }
 }
