@@ -6,8 +6,9 @@ public class PlayerController : MonoBehaviour
 {
     public float speed;
     private float horizontalInput;
-    private float xRange = 24.2f;
+    public float xRange = 20f;
     public GameObject projectile;
+    public int health;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,7 +18,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             Instantiate(projectile, transform.position, projectile.transform.rotation);
         }

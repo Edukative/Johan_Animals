@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CollisionDetector : MonoBehaviour
 {
+    public PlayerController player;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,6 +19,14 @@ public class CollisionDetector : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         Destroy(gameObject);
-        Destroy(other.gameObject);
+        if (other.tag != "Player")
+        {
+            Destroy(other.gameObject);
+        }
+        else
+        {
+            player.health--;
+            Debug.Log(player.health);
+        }
     }
 }
